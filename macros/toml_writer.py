@@ -3,10 +3,10 @@ class TomlWriter:
         pass
 
     def branch(self, name: str):
-        return f"[{name}]"
+        return f"[{name}]\n"
 
     def key_value(self, key: str, value: str):
-        return f"{key} = {value}"
+        return f"{key} = \"{value}\"\n"
 
 # For testing purposes
 # ====================

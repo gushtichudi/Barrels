@@ -1,7 +1,7 @@
 import ansi
 
 class Constants:
-    VERSION = ansi.magenta("0.0.0-1")
+    VERSION = ansi.magenta("0.0.0-3")
     EMOJIS = {
         "info": "ℹ️",
         "success": "✅",

@@ -35,12 +35,16 @@ class Handler:
                         print(f"{Constants.EMOJIS["error"]} {ansi.magenta(self.argv[1])} needs more parameters!")
                         print(f"Usage: {ansi.magenta(self.argv[0])} [new | show | del | init <barrel>]")
                     else:
+                        ### THREE
+                        for word in self.argv:
+                            print(word)
+
                         prefix_name = self.argv[2]
                         input(f"Press enter if this is the correct name: {prefix_name}")
 
                         barrel = Barrel(prefix_name)
 
-                        match self.argv[2]:
+                        match self.argv[1]:
                             case "new":
                                 barrel.new()
                             case _:

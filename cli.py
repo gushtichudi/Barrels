@@ -1,4 +1,6 @@
 from cmds import handler
+from CONSTANTS import Constants
+from jobs import checks
 
 import os
 import platform
@@ -26,7 +28,7 @@ class Cli:
         self.os = ansi.magenta(sys.platform)
         self.arch = ansi.magenta(platform.machine())
         # ===================
-        self.VERSION = ansi.magenta("0.0.0-0")
+        self.VERSION = Constants.VERSION
 
     def greeting(self):
         print(f"{self.emojis["star"]} Hello, {self.username}! This is Barrels {self.VERSION} running on an {self.arch} in {self.os}")
@@ -46,5 +48,8 @@ class Cli:
             hnd.start()
 
     def start(self):
+        chk = checks.Checks()
+        chk.start()
+
         self.greeting()
         self.field()
