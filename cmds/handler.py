@@ -44,8 +44,8 @@ class Handler:
                         match self.argv[1]:
                             case "new":
                                 barrel.new()
-                            case _:
-                                print("todo")
+                            case "init":
+                                barrel.init(None, None)
             case _:
                 print(f"{Constants.EMOJIS["error"]} {ansi.magenta(self.argv[0])} is not a valid command!")
         print()
