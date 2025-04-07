@@ -48,3 +48,39 @@ class Barrel:
             print(f"Run {ansi.magenta(f"barrel init {barrel_file_name}")} to initialize everything.")
 
         return os.path.join(self.common_directories["barrel_storage"], barrel_file_name), 0
+
+    '''
+    Initializes barrel by parsing <barrel>.barrel.toml and creating a WINE/Proton prefix using it.
+        Bool => True if succeeded, otherwise False.
+    '''
+    def init(self, barrel, setup_file="", proton_or_wine="") -> bool:
+        (i, j) = (setup_file, proton_or_wine)
+
+        if not setup_file:
+            i = input("Please input the setup executable/direct executable you want the prefix to run: ")
+        if not proton_or_wine:
+            answered = False
+
+            while not answered:
+                k = input("Do you want to use Proton or WINE for the barrel [W/p/?]: ")
+
+                match k.casefold():
+                    case "w":
+                        j = "WINE"
+                        answered = True
+                    case "p":
+                        j = "Proton"
+                        answered = True
+                    case "?":
+                        print("WINE   => Used for general purpose software like utilities found in Windows but not in Unix")
+                        print("Proton => Valve's fork of WINE focused on gaming")
+                    case _:
+                        print("...")
+
+        barrel_path = os.path.join(self.common_directories["barrel_storage"], barrel)
+
+        if not os.path.isfile(barrel_path):
+            print(f"{Constants.EMOJIS["critical"]} Cannot find barrel {ansi.magenta(barrel)}!")
+            return False
+
+        
