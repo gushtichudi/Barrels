@@ -36,9 +36,6 @@ class Handler:
                         print(f"Usage: {ansi.magenta(self.argv[0])} [new | show | del | init <barrel>]")
                     else:
                         ### THREE
-                        for word in self.argv:
-                            print(word)
-
                         prefix_name = self.argv[2]
                         input(f"Press enter if this is the correct name: {prefix_name}")
 
